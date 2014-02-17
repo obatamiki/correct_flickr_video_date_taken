@@ -1,7 +1,7 @@
 correct_flickr_video_date_taken
 ===============================
 
-概要:flickr動画の"でたらめ"な撮影日時を修正するスクリプト
+flickr動画の"でたらめ"な撮影日時を修正するスクリプト
 ------
 This tool corrects "date taken" of flickr video upload date to actual taken date.  
 公式のものを含むほとんどのflickrアップローダは動画(video)をアップロードした際に正しい撮影日時(date taken)を設定してくれず、flickr側のデフォルトの挙動である北米時間(-08:00)でのアップロード日時が設定されてしまいます。
