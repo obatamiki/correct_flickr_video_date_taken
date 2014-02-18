@@ -54,13 +54,7 @@ Corrects "date taken" of flickr video upload date to actual taken date.
 
 アンインストール
 ------
-+ `correct_flickr_video_date_taken.rb`
-+ `crypt.rb`
-+ `webbrowser.rb`
-+ `tok.enc`（初回認証後に作られます）
-+ `sec.enc`（初回認証後に作られます）
-
-を削除し、flickrアカウント上で本アプリ（スクリプト）との連携を解除してください。
+最初にアーカイブを解凍してできたフォルダを丸ごと削除し、flickrアカウント上で本アプリ（スクリプト）との連携を解除してください。
 
 参考情報
 ------
