@@ -40,7 +40,7 @@ flickr動画のタイトルが元ファイルの名前（拡張子は有無ど�
 の3ファイルをダウンロードして任意のディレクトリに置いてください。GemfileとGemfile.lockは必須ではありません(Bundler用です)。
 
 コマンドプロンプトで上記ディレクトリに移動し、
-    correct_flickr_video_date_taken.rb [media_path1] [media_path2]...
+`correct_flickr_video_date_taken.rb [media_path1] [media_path2]...`
 を実行してください。
 
 `media_path` には、flickrにアップロードした動画の元ファイルが入っているディレクトリを指定してください。指定したディレクトリ以下のサブディレクトリも含む全てのファイルを走査します。`media_path`を省略した場合にはスクリプトを実行したディレクトリが指定されたものとして扱います。
