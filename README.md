@@ -31,11 +31,7 @@ Corrects "date taken" of flickr video upload date to actual taken date.
  
 使い方
 ------
-+ `correct_flickr_video_date_taken.rb`
-+ `crypt.rb`
-+ `webbrowser.rb`
-
-の3ファイルをダウンロードして任意のディレクトリに置いてください。GemfileとGemfile.lockは必須ではありません(Bundler用です)。
+このページのDownload ZIPボタンからリポジトリを丸ごとダウンロードして、解凍したフォルダを任意の場所に置いてください。
 
 コマンドプロンプトで上記ディレクトリに移動し、
 `correct_flickr_video_date_taken.rb [media_path1] [media_path2]...`
