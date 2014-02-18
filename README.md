@@ -3,7 +3,7 @@ correct_flickr_video_date_taken
 
 flickr動画の"でたらめ"な撮影日時を修正するスクリプト
 
-This script corrects "date taken" of flickr video upload date to actual taken date.
+Corrects "date taken" of flickr video upload date to actual taken date.
 
 解決しようとしている問題
 ------
