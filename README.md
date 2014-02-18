@@ -74,6 +74,7 @@ Corrects "date taken" of flickr video upload date to actual taken date.
 + 動画メタデータ内の撮影日時情報の読み取り
 + キャッシングによる再実行時の動作高速化
 + (メタデータ内に撮影日時情報が無いため動画同様にアップロード日時が撮影日時と扱われてしまう)PNGファイルの更新日時をflickrの撮影日時として設定する
++ Mac対応
 + このREADMEを英語で書く
 
 謝辞
