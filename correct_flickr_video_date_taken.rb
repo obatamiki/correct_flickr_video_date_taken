@@ -3,10 +3,12 @@
 
 #These comments are written in japanese.
 
-#(特にEye-Fiが)flickrにアップロードした動画ファイルのdate taken(撮影日時)が
-#正しく設定されずアップロード日時になってしまう問題を修正するツール
+#Windows用Rubyスクリプト
+#Ruby for Windowsでしか動作確認していません。
+#別途flickrawのインストールが必要です。
 
-#別途flickrawのインストールが必要
+#(特にEye-Fiが)flickrにアップロードした動画ファイルのdate taken(撮影日時)が
+#正しく設定されずアップロード日時になってしまう問題を修正する
 
 #flickrの同名タイトル・同じ長さの動画ファイルのdate takenにローカルファイルの更新日時を書き込む
 #ファイル名と同じタイトルがflickrのコンテンツに付与されていることが前提
@@ -62,7 +64,7 @@ class MyFlickr < FlickRaw::Flickr
     else
       #オーソリを行いトークンとシークレットを暗号化してファイルに書く
       token = flickr.get_request_token
-      auth_url = flickr.get_authorize_url(token['oauth_token'], :perms => 'delete')
+      auth_url = flickr.get_authorize_url(token['oauth_token'], :perms => 'write')
 
       puts "Open this url in your process to complete the authication process : #{auth_url}"
       WebBrowser.open auth_url
@@ -98,40 +100,40 @@ class MyFlickr < FlickRaw::Flickr
   end
 
   def local_list_file
-      #更新日時の参照元となる動画が入ったローカルフォルダ。サブディレクトリも見に行く。
-      if ARGV.size == 0
-        dirglob = local_glob_files(File.expand_path(File.dirname(__FILE__)))
-      else
-        dirglob = []
-        ARGV.each do |arg|
-          unless File.directory?(arg)
-            puts arg + " is not a directory."
-            next
-          end
-          one_dirglob = local_glob_files(arg.gsub(File::ALT_SEPARATOR) {File::SEPARATOR})
-          puts one_dirglob.size.to_s + " file(s) found."
-          dirglob = dirglob + one_dirglob
+    #更新日時の参照元となる動画が入ったローカルフォルダ。サブディレクトリも見に行く。
+    if ARGV.size == 0
+      dirglob = local_glob_files(File.expand_path(File.dirname(__FILE__)))
+    else
+      dirglob = []
+      ARGV.each do |arg|
+        unless File.directory?(arg)
+          puts arg + " is not a directory."
+          next
         end
+        one_dirglob = local_glob_files(arg.gsub(File::ALT_SEPARATOR) {File::SEPARATOR})
+        puts one_dirglob.size.to_s + " file(s) found."
+        dirglob = dirglob + one_dirglob
       end
+    end
 
-      if dirglob.size == 0
-        puts "total " + dirglob.size.to_s + " file(s) found."
-        puts "do nothing."
-        puts "usage: video_taken_date_fixr.rb [media_path1] [media_path2]..."
-        exit
-      else
-        puts "total " + dirglob.size.to_s + " file(s) found."
-        before = dirglob.size
-        dirglob.uniq!
-        after = dirglob.size
-        puts (before - after).to_s + " duplicate file(s) excluded." if after < before
-      end
+    if dirglob.size == 0
+      puts "total " + dirglob.size.to_s + " file(s) found."
+      puts "do nothing."
+      puts "Usage: correct_flickr_video_date_taken.rb [media_path1] [media_path2]..."
+      exit
+    else
+      puts "total " + dirglob.size.to_s + " file(s) found."
+      before = dirglob.size
+      dirglob.uniq!
+      after = dirglob.size
+      puts (before - after).to_s + " duplicate file(s) excluded." if after < before
+    end
     return dirglob
   end
 
   def local_glob_files(search_path)
     puts "Search Path:" + search_path
-    dirglob = Dir.glob("#{search_path}/**/*.{#{EXT_LIST}}".encode('utf-8'))
+    dirglob = Dir.glob("#{search_path}/**/*.{#{EXT_LIST}}".encode('utf-8')) #unicodeファイル名にも対応
     dirglob.each{|f|
       puts f
     }
